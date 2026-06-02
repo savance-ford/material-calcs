@@ -1,7 +1,7 @@
 export const siteConfig = {
   siteName: 'DIY Material Calculator',
   siteUrl: process.env.NEXT_PUBLIC_SITE_URL || 'https://diymaterialcalculator.com',
-  description: 'Free, accurate estimation tools for your next DIY concrete or landscaping project.',
+  description: 'Simple material calculators for homeowners, DIYers, contractors, landscapers, and small crews who need quick estimates before buying, quoting, or starting a project.',
   defaultOgImage: '/og-image.jpg',
   contactEmail: 'hello@diymaterialcalculator.com',
 };

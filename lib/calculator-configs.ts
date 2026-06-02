@@ -166,7 +166,7 @@ const retainingWallCalculator: CalculatorConfig = {
       answer: 'Geogrid is a synthetic mesh laid between block layers and extending into the hillside to tie the wall and soil together into one unified mass. It is generally required on taller walls or walls with challenging soil loads.'
     }
   ],
-  relatedCalculators: ['paver-base-calculator', 'gravel-calculator'],
+  relatedCalculators: ['paver-base-calculator', 'gravel-calculator', 'mulch-calculator'],
   testCases: [
     { name: 'Standard Wall', inputs: { wallLengthFeet: 20, wallHeightFeet: 2, blockLengthInches: 12, blockHeightInches: 4, includeCapBlocks: 'yes', wastePercentage: 0, baseTrenchDepthInches: 6, baseTrenchWidthInches: 24 }, expectedOutputs: { totalWallBlocks: 120, totalCapBlocks: 20, baseMaterialCubicFeet: 20 } },
     { name: 'Waste Calculation', inputs: { wallLengthFeet: 20, wallHeightFeet: 2, blockLengthInches: 12, blockHeightInches: 4, includeCapBlocks: 'yes', wastePercentage: 10, baseTrenchDepthInches: 6, baseTrenchWidthInches: 24 }, expectedOutputs: { totalWallBlocks: 132, totalCapBlocks: 22, baseMaterialCubicFeet: 22 } },
@@ -1152,7 +1152,7 @@ const sonotubeCalculator: CalculatorConfig = {
       answer: 'Wet concrete is dense and fluid. If water pools in the hole, or if you pour too quickly, cardboard tubes can occasionally "float" upward. Backfilling a little dirt around the exterior base before pouring, or screwing a wooden stake to the side of the tube and driving it into the earth, secures it.'
     }
   ],
-  relatedCalculators: ['post-hole-concrete-calculator', 'concrete-bag-calculator'],
+  relatedCalculators: ['post-hole-concrete-calculator', 'concrete-footing-calculator', 'concrete-bag-calculator'],
   testCases: [
     { name: '1 standard tube', inputs: { tubeCount: 1, diameterInches: 8, height: 4, heightUnit: 'feet', wastePercentage: 0, bagSize: 80 }, expectedOutputs: { bagsNeeded: 3 } },
     { name: '10 standard tubes', inputs: { tubeCount: 10, diameterInches: 8, height: 4, heightUnit: 'feet', wastePercentage: 0, bagSize: 80 }, expectedOutputs: { bagsNeeded: 24 } },
@@ -1315,7 +1315,7 @@ const postHoleCalculator: CalculatorConfig = {
       answer: 'Because the post takes up space! If you only calculated the volume of the 12-inch cylinder hole, you would vastly overbuy concrete. An 8-inch hole, 24-inches deep, holds about 0.70 cubic feet. But a 4x4 post takes up roughly 0.17 cubic feet of that space, lowering the actual concrete demand.'
     }
   ],
-  relatedCalculators: ['concrete-slab-calculator', 'concrete-bag-calculator'],
+  relatedCalculators: ['concrete-bag-calculator', 'sonotube-concrete-calculator', 'concrete-footing-calculator', 'concrete-slab-calculator'],
   testCases: [
     { name: '1 standard hole', inputs: { postCount: 1, holeDiameter: 8, holeDepth: 24, postShape: 'square', postWidth: 3.5, wastePercentage: 0, bagSize: 80 }, expectedOutputs: { bagsNeeded: 1 } },
     { name: '10 standard holes', inputs: { postCount: 10, holeDiameter: 8, holeDepth: 24, postShape: 'square', postWidth: 3.5, wastePercentage: 0, bagSize: 80 }, expectedOutputs: { bagsNeeded: 9 } },

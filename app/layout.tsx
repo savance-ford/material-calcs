@@ -23,6 +23,7 @@ export default function RootLayout({children}: {children: React.ReactNode}) {
             </div>
             <div className="hidden md:flex gap-8 text-sm font-semibold text-stone-500">
               <Link href="/calculators" className="text-stone-900 border-b-2 border-emerald-700 pb-1">Calculators</Link>
+              <Link href="/guides" className="hover:text-emerald-700 transition-colors">Guides</Link>
               <Link href="/methodology" className="hover:text-emerald-700 transition-colors">Methodology</Link>
               <Link href="/about" className="hover:text-emerald-700 transition-colors">About Us</Link>
               <Link href="/contact" className="hover:text-emerald-700 transition-colors">Contact</Link>
@@ -30,7 +31,7 @@ export default function RootLayout({children}: {children: React.ReactNode}) {
             
             {/* Mobile Nav Toggle / Placeholder */}
             <div className="md:hidden flex items-center gap-4">
-              <Link href="/methodology" className="text-sm font-semibold text-stone-600 hover:text-emerald-700">Methodology</Link>
+              <Link href="/guides" className="text-sm font-semibold text-stone-600 hover:text-emerald-700">Guides</Link>
               <Link href="/about" className="text-sm font-semibold text-stone-600 hover:text-emerald-700">About</Link>
             </div>
           </nav>
@@ -57,6 +58,7 @@ export default function RootLayout({children}: {children: React.ReactNode}) {
                 </div>
                 <div className="flex flex-wrap justify-center gap-6 text-sm text-stone-500 font-medium">
                   <Link href="/about" className="hover:text-emerald-700">About Us</Link>
+                  <Link href="/guides" className="hover:text-emerald-700">Guides</Link>
                   <Link href="/methodology" className="hover:text-emerald-700">Methodology</Link>
                   <Link href="/contact" className="hover:text-emerald-700">Contact</Link>
                   <Link href="/privacy" className="hover:text-emerald-700">Privacy Policy</Link>

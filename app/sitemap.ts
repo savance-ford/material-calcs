@@ -1,11 +1,13 @@
 import { MetadataRoute } from 'next';
 import { calculators } from '@/lib/calculator-configs';
+import { guides } from '@/lib/guide-configs';
 import { siteConfig } from '@/lib/site';
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const routes = [
     '',
     '/calculators',
+    '/guides',
     '/methodology',
     '/about',
     '/contact',
@@ -26,5 +28,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.8,
   }));
 
-  return [...routes, ...calculatorRoutes];
+  const guideRoutes = guides.map((guide) => ({
+    url: `${siteConfig.siteUrl}/guides/${guide.slug}`,
+    lastModified: new Date().toISOString().split('T')[0],
+    changeFrequency: 'monthly' as const,
+    priority: 0.7,
+  }));
+
+  return [...routes, ...calculatorRoutes, ...guideRoutes];
 }

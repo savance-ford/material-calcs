@@ -12,7 +12,7 @@ export default function DisclaimerPage() {
       <div className="bg-stone-50 p-8 rounded-2xl border border-stone-200 text-stone-700 prose prose-stone max-w-none">
         <h2>Estimations Only</h2>
         <p>
-          The calculators on <strong>{siteConfig.siteName}</strong> are designed to provide estimated quantities of materials needed for common DIY projects. These estimates are generated based on mathematical formulas, typical industry standards, and specified user inputs.
+          The calculators on <strong>{siteConfig.siteName}</strong> are designed to provide estimated quantities of materials for common home improvement, landscaping, hardscaping, and small jobsite projects. They are written to be simple enough for homeowners and weekend DIYers, but they can also help contractors, landscapers, and small crews make quick material estimates before buying materials, quoting a job, or checking measurements in the field.
         </p>
         <p>
           <strong>These results are NOT professional engineering plans or guarantees.</strong>
@@ -28,12 +28,13 @@ export default function DisclaimerPage() {
           <li>Spillage and waste during installation</li>
           <li>Cutting requirements, breakage, or defective materials</li>
           <li>Variations in product dimensions from different manufacturers</li>
+          <li>Supplier measurement, density, and bag yield differences</li>
           <li>Local building codes and requirements</li>
         </ul>
 
         <h2>Recommendation</h2>
         <p>
-          We strongly advise users to verify all measurements independently and confirm required quantities with their material supplier or a licensed contractor before purchasing. It is generally recommended to order an additional 5% to 15% of materials to account for waste and cuts.
+          Verify all measurements independently and confirm required quantities with your material supplier, contractor, project plans, product labels, or local requirements before purchasing or quoting work. A 5% to 15% buffer is often used for waste and cuts, but the right amount depends on the project.
         </p>
       </div>
     </div>
