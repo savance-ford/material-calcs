@@ -855,7 +855,7 @@ const mulchCalculator: CalculatorConfig = {
       answer: 'Yes! Organic mulches like wood chips, bark, and shredded leaves decompose over time, adding valuable organic matter and nutrients back into your soil. Because it breaks down, you will typically need to "top dress" your beds with a thin fresh layer every year or two.'
     }
   ],
-  relatedCalculators: ['post-hole-concrete-calculator'],
+  relatedCalculators: ['gravel-calculator', 'raised-bed-soil-calculator', 'paver-base-calculator'],
   testCases: [
     { name: 'Standard 10x10', inputs: { mode: 'rectangle', lengthFeet: 10, widthFeet: 10, depthInches: 3, bagSizeCubicFeet: 2, wastePercentage: 0 }, expectedOutputs: { bagsNeeded: 13, totalVolumeCubicYards: 0.93 } },
     { name: 'Tree Ring', inputs: { mode: 'circle', diameterFeet: 6, depthInches: 2, bagSizeCubicFeet: 2, wastePercentage: 0 }, expectedOutputs: { bagsNeeded: 3, totalAreaSqFt: 28.27 } },
@@ -1502,7 +1502,7 @@ const concreteBagsCalculator: CalculatorConfig = {
     ]
   };
 
-export const calculators: CalculatorConfig[] = [
+const calculatorConfigs: CalculatorConfig[] = [
   retainingWallCalculator,
   paverBaseCalculator,
   raisedBedSoilCalculator,
@@ -1660,7 +1660,13 @@ export const calculators: CalculatorConfig[] = [
         answer: 'For standard 4-inch patios or walkways, wire mesh or fiber-reinforced concrete is often sufficient. If the slab will bear heavy loads or is in an area with freeze-thaw cycles, #3 or #4 rebar on chairs is highly recommended.'
       }
     ],
-    relatedCalculators: ['mulch-calculator'],
+    relatedCalculators: [
+      'concrete-bag-calculator',
+      'concrete-footing-calculator',
+      'sonotube-concrete-calculator',
+      'post-hole-concrete-calculator',
+      'paver-base-calculator'
+    ],
     monetizationPlacements: ['home-depot-concrete-banner', 'local-contractor-lead-widget'],
     testCases: [
       {
@@ -1697,10 +1703,17 @@ export const calculators: CalculatorConfig[] = [
   }
 ];
 
+export const calculators: CalculatorConfig[] = calculatorConfigs.map((calculator) => ({
+  reviewedDate: 'June 2026',
+  ...calculator,
+}));
+
 export function getCalculatorBySlug(slug: string): CalculatorConfig | undefined {
   return calculators.find(c => c.slug === slug);
 }
 
 export function getRelatedCalculators(slugs: string[]): CalculatorConfig[] {
-  return calculators.filter(c => slugs.includes(c.slug));
+  return slugs
+    .map((slug) => calculators.find((calculator) => calculator.slug === slug))
+    .filter((calculator): calculator is CalculatorConfig => Boolean(calculator));
 }

@@ -42,7 +42,7 @@ export default function CalculatorEngine({ slug }: CalculatorEngineProps) {
       return `${out.label}: ${out.type === 'cost' ? '$' + val : val} ${out.unit && out.type !== 'cost' ? out.unit : ''}`;
     }).filter(Boolean).join('\n');
     
-    navigator.clipboard.writeText(`--- ${config.title} Estimate ---\n` + textToCopy);
+    navigator.clipboard.writeText(`--- ${config.title} Material List ---\nFor this project, buy/order approximately:\n` + textToCopy);
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);
   };
@@ -179,14 +179,20 @@ export default function CalculatorEngine({ slug }: CalculatorEngineProps) {
         </div>
       </div>
 
-      {/* Quick Results Panel */}
+      {/* Material List Panel */}
       <div className="lg:col-span-5 flex flex-col gap-6">
         <div className="bg-stone-900 rounded-3xl p-6 sm:p-8 text-white shadow-xl flex-1 flex flex-col">
-          <div className="flex justify-between items-center mb-6">
-            <h3 className="text-xs font-bold uppercase tracking-widest text-emerald-400">Total Materials Needed</h3>
+          <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-4 mb-6">
+            <div>
+              <p className="text-xs font-bold uppercase tracking-widest text-emerald-400 mb-2">Your Material List</p>
+              <h3 className="text-2xl font-extrabold text-white">For this project, buy/order approximately</h3>
+              <p className="mt-2 text-sm leading-relaxed text-stone-300">
+                For this project, use these quantities as your shopping or delivery list.
+              </p>
+            </div>
             <button 
               onClick={handleCopy}
-              className="text-xs font-semibold bg-white/10 hover:bg-white/20 px-3 py-1.5 rounded-lg transition-colors flex items-center gap-1.5"
+              className="w-fit text-xs font-semibold bg-white/10 hover:bg-white/20 px-3 py-1.5 rounded-lg transition-colors flex items-center gap-1.5"
             >
               {copied ? (
                 <>
@@ -196,7 +202,7 @@ export default function CalculatorEngine({ slug }: CalculatorEngineProps) {
               ) : (
                 <>
                   <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3"></path></svg>
-                  Copy List
+                  Copy Material List
                 </>
               )}
             </button>
@@ -228,7 +234,7 @@ export default function CalculatorEngine({ slug }: CalculatorEngineProps) {
                   <div className="flex justify-between items-center gap-4">
                     <span className="text-stone-300 font-medium">{output.label}</span>
                     <div className="text-right">
-                      <span className="text-3xl font-extrabold text-white">
+                      <span className={`${output.type === 'primary' || output.type === 'material' ? 'text-3xl' : 'text-2xl'} font-extrabold text-white`}>
                         {output.type === 'cost' ? `$${val}` : val}
                       </span>
                       {output.unit && output.type !== 'cost' && (
@@ -245,7 +251,7 @@ export default function CalculatorEngine({ slug }: CalculatorEngineProps) {
           </div>
           
           <div className="mt-8 pt-6 border-t border-stone-800 text-xs text-stone-400 leading-relaxed">
-            <strong className="text-stone-300 mr-1">Pro Tip:</strong> These results are estimates. Actual needs vary due to compaction, grading, and cuts. We recommend adding 5-10% extra material to ensure you don&apos;t run short mid-project.
+            <strong className="text-stone-300 mr-1">Estimate note:</strong> Actual needs vary due to compaction, grading, cuts, bag yield, and supplier differences. Confirm requirements before purchasing.
           </div>
         </div>
       </div>
