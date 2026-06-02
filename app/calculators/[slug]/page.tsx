@@ -10,6 +10,8 @@ interface Props {
   params: Promise<{ slug: string }>;
 }
 
+type JsonLd = Record<string, unknown>;
+
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
   const config = getCalculatorBySlug(slug);
@@ -44,7 +46,7 @@ export default async function CalculatorPage({ params }: Props) {
 
   const relatedCalcs = config.relatedCalculators ? getRelatedCalculators(config.relatedCalculators) : [];
 
-  const jsonLd: any[] = [
+  const jsonLd: JsonLd[] = [
     {
       '@context': 'https://schema.org',
       '@type': 'BreadcrumbList',
@@ -110,6 +112,9 @@ export default async function CalculatorPage({ params }: Props) {
           </div>
           <h1 className="text-3xl sm:text-4xl font-bold text-stone-900">{config.title}</h1>
           <p className="text-stone-600 mt-2 text-lg">{config.description}</p>
+          <p className="mt-3 text-sm font-semibold text-stone-500">
+            Last reviewed: {config.reviewedDate || 'June 2026'}
+          </p>
         </div>
       </div>
 
@@ -127,38 +132,74 @@ export default async function CalculatorPage({ params }: Props) {
 
         {config.formulaExplanation && (
           <section className="bg-white/80 p-6 sm:p-8 rounded-2xl border border-stone-200 shadow-sm">
-            <h2 className="text-2xl font-bold text-stone-900 mb-4">How This Is Calculated</h2>
-            <p className="text-stone-700 leading-relaxed">
-              {config.formulaExplanation}
-            </p>
+            <h2 className="text-2xl font-bold text-stone-900 mb-6">Formula and Assumptions</h2>
+            <div className="space-y-6">
+              <div>
+                <h3 className="text-lg font-bold text-stone-900 mb-2">Formula used</h3>
+                <p className="text-stone-700 leading-relaxed">
+                  {config.formulaExplanation}
+                </p>
+              </div>
+              <div>
+                <h3 className="text-lg font-bold text-stone-900 mb-2">Unit conversions</h3>
+                <p className="text-stone-700 leading-relaxed">
+                  Inches are converted to feet before volume is calculated. Cubic feet are converted to cubic yards by dividing by 27. Bag counts are rounded up because stores do not sell partial bags.
+                </p>
+              </div>
+              <div>
+                <h3 className="text-lg font-bold text-stone-900 mb-2">Waste factor explanation</h3>
+                <p className="text-stone-700 leading-relaxed">
+                  Waste factor helps account for uneven surfaces, cuts, spills, compaction, settling, and measurement differences. The right buffer depends on your project and material.
+                </p>
+              </div>
+            </div>
           </section>
         )}
 
         {(config.assumptions || config.warnings) && (
           <section className="bg-white/80 p-6 sm:p-8 rounded-2xl border border-stone-200 shadow-sm">
-            <h2 className="text-2xl font-bold text-stone-900 mb-6">Important Considerations</h2>
+            <h2 className="text-2xl font-bold text-stone-900 mb-6">Material Assumptions and Disclaimer</h2>
             <div className="space-y-8">
+              {config.assumptions && config.assumptions.length > 0 && (
+                <div>
+                  <h3 className="text-stone-800 font-bold mb-3">Bag yield or density assumptions</h3>
+                  <ul className="list-disc pl-5 space-y-2 text-stone-700">
+                    {config.assumptions.map((a, idx) => <li key={idx}>{a}</li>)}
+                  </ul>
+                </div>
+              )}
+              <div>
+                <h3 className="text-stone-800 font-bold mb-3">Estimate disclaimer</h3>
+                <p className="text-stone-700 leading-relaxed">
+                  These results are planning estimates based on the measurements and assumptions shown here. Confirm quantities with your supplier, product label, local code requirements, or a qualified professional before purchasing.
+                </p>
+              </div>
               {config.warnings && config.warnings.length > 0 && (
                 <div>
                   <h3 className="text-amber-700 font-bold mb-3 flex items-center gap-2">
                     <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path></svg>
-                    Warnings
+                    When to be careful
                   </h3>
                   <ul className="list-disc pl-5 space-y-2 text-stone-700">
                     {config.warnings.map((w, idx) => <li key={idx}>{w}</li>)}
                   </ul>
                 </div>
               )}
-              {config.assumptions && config.assumptions.length > 0 && (
-                <div>
-                  <h3 className="text-stone-800 font-bold mb-3">Assumptions Made</h3>
-                  <ul className="list-disc pl-5 space-y-2 text-stone-700">
-                    {config.assumptions.map((a, idx) => <li key={idx}>{a}</li>)}
-                  </ul>
-                </div>
-              )}
             </div>
           </section>
+        )}
+
+        {config.additionalSections && config.additionalSections.length > 0 && (
+          <div className="space-y-8">
+            {config.additionalSections.map((section) => (
+              <section key={section.title} className="bg-white/80 p-6 sm:p-8 rounded-2xl border border-stone-200 shadow-sm">
+                <h2 className="text-2xl font-bold text-stone-900 mb-4">{section.title}</h2>
+                <div className="prose prose-stone prose-sm sm:prose-base max-w-none prose-headings:text-stone-800 prose-a:text-emerald-700 prose-a:font-semibold">
+                  <ReactMarkdown>{section.markdown}</ReactMarkdown>
+                </div>
+              </section>
+            ))}
+          </div>
         )}
 
         {config.exampleCalculation && (

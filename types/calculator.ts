@@ -57,6 +57,7 @@ export interface CalculatorConfig {
   primaryKeyword: string;
   secondaryKeywords: string[];
   userIntent: string;
+  reviewedDate?: string;
 
   inputs: CalculatorInput[];
   outputs: CalculatorOutput[];
