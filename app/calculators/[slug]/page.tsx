@@ -5,6 +5,7 @@ import { Metadata } from 'next';
 import Link from 'next/link';
 import ReactMarkdown from 'react-markdown';
 import { siteConfig } from '@/lib/site';
+import { getGuidesForCalculator } from '@/lib/guide-configs';
 
 interface Props {
   params: Promise<{ slug: string }>;
@@ -45,6 +46,7 @@ export default async function CalculatorPage({ params }: Props) {
   }
 
   const relatedCalcs = config.relatedCalculators ? getRelatedCalculators(config.relatedCalculators) : [];
+  const relatedGuides = getGuidesForCalculator(config.slug).slice(0, 4);
 
   const jsonLd: JsonLd[] = [
     {
@@ -226,6 +228,27 @@ export default async function CalculatorPage({ params }: Props) {
                   <h3 className="font-bold text-stone-900 text-lg mb-3">{faq.question}</h3>
                   <p className="text-stone-700 leading-relaxed">{faq.answer}</p>
                 </div>
+              ))}
+            </div>
+          </section>
+        )}
+
+        {relatedGuides.length > 0 && (
+          <section>
+            <h2 className="text-2xl font-bold text-stone-900 mb-6">Related Guides</h2>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+              {relatedGuides.map((guide) => (
+                <Link
+                  key={guide.slug}
+                  href={`/guides/${guide.slug}`}
+                  className="bg-white rounded-xl p-6 shadow-sm border border-stone-200 hover:shadow-md hover:border-emerald-300 transition-all group"
+                >
+                  <p className="text-xs font-bold uppercase tracking-widest text-stone-500 mb-2">{guide.category}</p>
+                  <h3 className="text-lg font-bold text-stone-900 group-hover:text-emerald-700 transition-colors mb-2">
+                    {guide.title}
+                  </h3>
+                  <p className="text-stone-600 text-sm line-clamp-2">{guide.description}</p>
+                </Link>
               ))}
             </div>
           </section>

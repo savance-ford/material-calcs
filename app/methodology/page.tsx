@@ -4,7 +4,7 @@ import { siteConfig } from '@/lib/site';
 
 export const metadata: Metadata = {
   title: `Methodology | ${siteConfig.siteName}`,
-  description: 'How DIY Material Calculator estimates concrete, mulch, gravel, soil, paver base, and other common project materials.',
+  description: 'How DIY Material Calculator estimates concrete, mulch, gravel, soil, paver base, and other common project materials for DIY planning and quick jobsite checks.',
   alternates: {
     canonical: `${siteConfig.siteUrl}/methodology`,
   },
@@ -13,7 +13,7 @@ export const metadata: Metadata = {
 const sections = [
   {
     title: 'How Our Calculators Work',
-    body: 'Each calculator starts with the shape or project type, converts your measurements into a volume or count, then applies common DIY assumptions such as waste factor, bag yield, density, or settling where that material requires it.',
+    body: 'Each calculator starts with the shape or project type, converts your measurements into a volume or count, then applies common assumptions such as waste factor, bag yield, density, or settling where that material requires it.',
   },
   {
     title: 'Volume Formulas',
@@ -33,7 +33,7 @@ const sections = [
   },
   {
     title: 'Waste Factor Assumptions',
-    body: 'Waste factor helps account for cuts, spills, uneven ground, compaction, settling, imperfect forms, and small measuring errors. Many DIY projects use 5% to 15% depending on the material and how forgiving the job is.',
+    body: 'Waste factor helps account for cuts, spills, uneven ground, compaction, settling, imperfect forms, and small measuring errors. Many home improvement and small jobsite estimates use 5% to 15% depending on the material and how forgiving the job is.',
   },
   {
     title: 'Why Results Are Estimates',
@@ -58,7 +58,7 @@ export default function MethodologyPage() {
           How DIY Material Calculator Builds Estimates
         </h1>
         <p className="text-lg sm:text-xl leading-relaxed text-stone-700">
-          Our goal is to make material planning clear enough for a homeowner at the store, while still showing the formulas and assumptions behind each estimate.
+          Our goal is to make material planning clear enough for a homeowner at the store, while still being useful for contractors, landscapers, and small crews checking quantities in the field.
         </p>
       </header>
 
@@ -74,7 +74,7 @@ export default function MethodologyPage() {
       <div className="mt-10 rounded-2xl border border-emerald-100 bg-emerald-50 p-6">
         <h2 className="text-xl font-bold text-stone-950 mb-2">Use the calculators as planning tools</h2>
         <p className="leading-relaxed text-stone-700 mb-4">
-          They are meant to help you estimate what to buy, not replace building code, engineering review, manufacturer instructions, or supplier recommendations.
+          They are meant to help you estimate what to buy, quote, or stage for a project, not replace building code, engineering review, manufacturer instructions, supplier recommendations, or professional requirements.
         </p>
         <Link href="/calculators" className="font-bold text-emerald-800 hover:text-emerald-900">
           Browse material calculators

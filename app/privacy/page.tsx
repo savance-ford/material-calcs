@@ -22,7 +22,7 @@ export default function PrivacyPage() {
         <p>We may use standard analytics tools (like Google Analytics) to understand aggregated traffic patterns, which helps us improve our calculators. These tools may use cookies. We do not track individual users across the internet.</p>
         
         <h2>4. Third-Party Links</h2>
-        <p>Our website may contain affiliate links to third-party retailers. If you click on these links, those third parties may collect data about your visit according to their own privacy policies.</p>
+        <p>Our website may link to third-party resources for reference. If you click on an external link, that third party may collect data about your visit according to its own privacy policy.</p>
         
         <h2>5. Contact</h2>
         <p>If you have any questions about this Privacy Policy, please contact us at {siteConfig.contactEmail}.</p>

@@ -1,11 +1,12 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
 import { calculators } from '@/lib/calculator-configs';
+import { getGuidesByCategory } from '@/lib/guide-configs';
 import { siteConfig } from '@/lib/site';
 
 export const metadata: Metadata = {
   title: `Calculators | ${siteConfig.siteName}`,
-  description: 'Browse free DIY material calculators for concrete, landscaping, and hardscaping projects.',
+  description: 'Browse simple material calculators for concrete, landscaping, and hardscaping projects before buying materials, quoting a job, or checking measurements.',
   alternates: {
     canonical: `${siteConfig.siteUrl}/calculators`,
   },
@@ -17,12 +18,12 @@ export default function CalculatorsPage() {
   return (
     <div className="max-w-5xl mx-auto">
       <header className="mb-12">
-        <p className="text-sm font-bold uppercase tracking-widest text-emerald-700 mb-3">DIY calculators</p>
+        <p className="text-sm font-bold uppercase tracking-widest text-emerald-700 mb-3">DIY and jobsite calculators</p>
         <h1 className="text-4xl sm:text-5xl font-extrabold text-stone-900 mb-4 tracking-tight">
           Material Calculators
         </h1>
         <p className="text-stone-600 max-w-2xl text-lg sm:text-xl">
-          Estimate concrete, mulch, gravel, soil, paver base, and retaining wall materials before you buy.
+          Quickly estimate concrete, mulch, gravel, soil, paver base, and retaining wall materials before you buy, quote, or start work.
         </p>
       </header>
 
@@ -48,6 +49,22 @@ export default function CalculatorsPage() {
                 </Link>
               ))}
             </div>
+            {getGuidesByCategory(category as 'Concrete' | 'Landscaping' | 'Hardscaping').length > 0 && (
+              <div className="mt-6 rounded-2xl border border-stone-200 bg-stone-50 p-5">
+                <h3 className="text-lg font-bold text-stone-900 mb-3">{category} guides</h3>
+                <div className="flex flex-wrap gap-3">
+                  {getGuidesByCategory(category as 'Concrete' | 'Landscaping' | 'Hardscaping').slice(0, 4).map((guide) => (
+                    <Link
+                      key={guide.slug}
+                      href={`/guides/${guide.slug}`}
+                      className="rounded-xl border border-stone-200 bg-white px-4 py-2 text-sm font-semibold text-stone-700 hover:border-emerald-300 hover:text-emerald-800 transition-colors"
+                    >
+                      {guide.title}
+                    </Link>
+                  ))}
+                </div>
+              </div>
+            )}
           </section>
         ))}
       </div>
