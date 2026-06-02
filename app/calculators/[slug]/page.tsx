@@ -171,7 +171,7 @@ export default async function CalculatorPage({ params }: Props) {
               <div>
                 <h3 className="text-stone-800 font-bold mb-3">Estimate disclaimer</h3>
                 <p className="text-stone-700 leading-relaxed">
-                  These results are planning estimates based on the measurements and assumptions shown here. Confirm quantities with your supplier, product label, local code requirements, or a qualified professional before purchasing.
+                  These tools are useful for DIY planning and quick jobsite estimates, but the results are still estimates. Verify quantities for structural work, code requirements, supplier material specs, product labels, or professional requirements before purchasing or quoting a job.
                 </p>
               </div>
               {config.warnings && config.warnings.length > 0 && (
