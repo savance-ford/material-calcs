@@ -17,8 +17,8 @@ export default function RootLayout({children}: {children: React.ReactNode}) {
           <nav className="h-16 bg-white border-b border-stone-200 flex items-center justify-between px-4 sm:px-8 shrink-0 sticky top-0 z-10 w-full shadow-sm">
             <div className="flex items-center gap-2">
               <Link href="/" className="flex items-center gap-3 group">
-                <div className="w-9 h-9 bg-emerald-700 rounded-lg flex items-center justify-center text-white font-bold shadow-md shadow-emerald-200 group-hover:bg-emerald-600 transition-colors">C</div>
-                <span className="text-xl font-bold tracking-tight text-stone-800">CalcPro <span className="text-emerald-700 italic">DIY</span></span>
+                <div className="w-9 h-9 bg-emerald-700 rounded-lg flex items-center justify-center text-white font-bold shadow-md shadow-emerald-200 group-hover:bg-emerald-600 transition-colors">D</div>
+                <span className="text-xl font-bold tracking-tight text-stone-800">{siteConfig.siteName}</span>
               </Link>
             </div>
             <div className="hidden md:flex gap-8 text-sm font-semibold text-stone-500">
@@ -46,8 +46,8 @@ export default function RootLayout({children}: {children: React.ReactNode}) {
               <div className="max-w-5xl mx-auto flex flex-col md:flex-row justify-between items-center md:items-start gap-8">
                 <div>
                   <div className="flex items-center gap-2 mb-3">
-                    <div className="w-6 h-6 bg-emerald-700 rounded flex items-center justify-center text-white text-xs font-bold">C</div>
-                    <span className="font-bold tracking-tight text-stone-800">CalcPro DIY</span>
+                    <div className="w-6 h-6 bg-emerald-700 rounded flex items-center justify-center text-white text-xs font-bold">D</div>
+                    <span className="font-bold tracking-tight text-stone-800">{siteConfig.siteName}</span>
                   </div>
                   <p className="text-sm text-stone-500 max-w-xs text-center md:text-left">
                     {siteConfig.description}

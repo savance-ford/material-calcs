@@ -1,6 +1,6 @@
-# CalcPro DIY
+# DIY Material Calculator
 
-CalcPro DIY is a Next.js + TypeScript utility site for DIY material calculators. The MVP includes concrete, landscaping, and hardscaping calculators with local TypeScript config files, reusable calculator UI, static calculator routes, SEO metadata, sitemap, robots.txt, and unit-tested formula helpers.
+DIY Material Calculator is a Next.js + TypeScript utility site for DIY material calculators. The MVP includes concrete, landscaping, and hardscaping calculators with local TypeScript config files, reusable calculator UI, static calculator routes, SEO metadata, sitemap, robots.txt, and unit-tested formula helpers.
 
 ## Tech stack
 
@@ -33,7 +33,7 @@ npm run build
 Create `.env.local` when you are ready to deploy or test canonical URLs locally:
 
 ```bash
-NEXT_PUBLIC_SITE_URL=https://www.calcprodiy.com
+NEXT_PUBLIC_SITE_URL=https://diymaterialcalculator.com
 ```
 
 Replace the URL with your real production domain before submitting the sitemap to Google Search Console.

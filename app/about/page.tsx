@@ -3,7 +3,7 @@ import { siteConfig } from '@/lib/site';
 
 export const metadata: Metadata = {
   title: `About Us | ${siteConfig.siteName}`,
-  description: 'Learn more about CalcPro DIY and our mission to help DIYers.',
+  description: 'Learn more about DIY Material Calculator and our mission to help DIYers.',
 };
 
 export default function AboutPage() {
