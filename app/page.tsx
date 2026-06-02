@@ -5,7 +5,7 @@ import Link from 'next/link';
 
 export const metadata: Metadata = {
   title: siteConfig.siteName,
-  description: 'DIY material calculators for concrete, mulch, gravel, soil, paver base, and common weekend projects.',
+  description: 'Simple material calculators for homeowners, DIYers, contractors, landscapers, and small crews planning concrete, mulch, gravel, soil, and paver base projects.',
   alternates: {
     canonical: siteConfig.siteUrl,
   },
@@ -14,7 +14,7 @@ export const metadata: Metadata = {
 const homepageFaqs = [
   {
     question: 'Are these calculators for homeowners or contractors?',
-    answer: 'They are written first for homeowners and weekend DIYers, with plain-language estimates that help you buy the right amount of material before starting a project.',
+    answer: 'These calculators are written to be simple enough for homeowners and weekend DIYers, but they can also help contractors, landscapers, and small crews make quick material estimates before buying materials, quoting a job, or checking a measurement in the field.',
   },
   {
     question: 'Why do the calculators include a waste factor?',
@@ -43,19 +43,19 @@ export default function Home() {
   const features = [
     {
       title: 'Instant estimates',
-      text: 'Enter your measurements and see material quantities update before you head to checkout.',
+      text: 'Enter measurements and see material quantities update before you buy, quote, or start work.',
     },
     {
       title: 'Copyable material lists',
-      text: 'Copy or print the estimate so your shopping list is ready at the store or on the jobsite.',
+      text: 'Copy or print a practical list for the store, supplier call, quote notes, or jobsite check.',
     },
     {
       title: 'Transparent formulas',
       text: 'Each calculator explains the formula, conversions, assumptions, and waste factors used.',
     },
     {
-      title: 'Built for DIY projects',
-      text: 'The tools are written for patios, garden beds, fence posts, walkways, and weekend repairs.',
+      title: 'Built for DIY projects and jobsite checks',
+      text: 'Useful for patios, garden beds, fence posts, walkways, quick estimates, and field measurements.',
     },
   ];
 
@@ -86,7 +86,7 @@ export default function Home() {
             Know how much material to buy before you start your project.
           </h1>
           <p className="text-stone-700 text-lg sm:text-xl leading-relaxed">
-            Fast, plain-English calculators for homeowners planning a weekend project or standing in the hardware store aisle wondering how many bags, blocks, yards, or tons to buy.
+            DIY Material Calculator helps homeowners, weekend DIYers, contractors, landscapers, and small crews estimate concrete, mulch, gravel, soil, paver base, and other materials before buying, quoting, or starting a job.
           </p>
           <div className="mt-8 flex flex-col sm:flex-row gap-3">
             <Link

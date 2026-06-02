@@ -42,7 +42,7 @@ export default function CalculatorEngine({ slug }: CalculatorEngineProps) {
       return `${out.label}: ${out.type === 'cost' ? '$' + val : val} ${out.unit && out.type !== 'cost' ? out.unit : ''}`;
     }).filter(Boolean).join('\n');
     
-    navigator.clipboard.writeText(`--- ${config.title} Material List ---\nFor this project, buy/order approximately:\n` + textToCopy);
+    navigator.clipboard.writeText(`--- ${config.title} Material List ---\nFor this project, buy or order approximately:\n` + textToCopy);
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);
   };
@@ -185,9 +185,9 @@ export default function CalculatorEngine({ slug }: CalculatorEngineProps) {
           <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-4 mb-6">
             <div>
               <p className="text-xs font-bold uppercase tracking-widest text-emerald-400 mb-2">Your Material List</p>
-              <h3 className="text-2xl font-extrabold text-white">For this project, buy/order approximately</h3>
+              <h3 className="text-2xl font-extrabold text-white">For this project, buy or order approximately</h3>
               <p className="mt-2 text-sm leading-relaxed text-stone-300">
-                For this project, use these quantities as your shopping or delivery list.
+                Use these quantities as a shopping list, supplier note, quote check, or quick jobsite material estimate.
               </p>
             </div>
             <button 

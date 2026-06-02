@@ -16,7 +16,7 @@ const retainingWallCalculator: CalculatorConfig = {
   category: 'Hardscaping',
   title: 'Retaining Wall Block Calculator',
   shortTitle: 'Retaining Walls',
-  description: 'Estimate exactly how many blocks, cap blocks, and gravel base material you need for small landscape retaining walls.',
+  description: 'Estimate how many blocks, cap blocks, and gravel base material you may need for small landscape retaining walls.',
   metaTitle: 'Retaining Wall Calculator - Block & Base Estimator',
   metaDescription: 'Calculate the number of blocks, caps, and base gravel needed for your retaining wall project based on wall dimensions.',
   primaryKeyword: 'retaining wall calculator',
@@ -99,7 +99,7 @@ const retainingWallCalculator: CalculatorConfig = {
     { id: 'totalCapBlocks', label: 'Cap Blocks', unit: 'Blocks', type: 'primary' },
     { id: 'totalRows', label: 'Rows / Courses', unit: 'Rows', type: 'secondary' },
     { id: 'baseMaterialCubicYards', label: 'Gravel Base Volume', unit: 'Cubic Yards', type: 'secondary' },
-    { id: 'baseMaterialCubicFeet', label: 'Gravel Base Volume', unit: 'ft³', type: 'secondary' },
+    { id: 'baseMaterialCubicFeet', label: 'Gravel Base Volume', unit: 'ft^3', type: 'secondary' },
     { id: 'warning', label: 'Important Note', type: 'warning' }
   ],
   calculate: (inputs) => {
@@ -123,7 +123,7 @@ const retainingWallCalculator: CalculatorConfig = {
       warning: result.warnings.join(' ')
     };
   },
-  formulaExplanation: 'The formula takes the total square footage of the wall face ($Length \times Height$) and divides it by the square footage of a single block face. To find courses, height is divided by block height. Cap blocks are found by dividing total wall length by block length. Base material volume is calculated as $Trench \ Length \times Width \times Depth$. Waste percentages are applied to account for cutting and breakage.',
+  formulaExplanation: 'Wall face area = length × height. Wall block count = wall face area ÷ one block face area. Courses = wall height ÷ block height. Cap blocks = total wall length ÷ cap block length. Gravel base volume = trench length × trench width × trench depth. Waste percentages are applied to account for cutting and breakage.',
   assumptions: [
     'Calculations assume standard running bond patterns.',
     'Wall height includes the buried courses, if any. Wall blocks and caps are distinct items depending on the product line.'
@@ -134,13 +134,13 @@ const retainingWallCalculator: CalculatorConfig = {
   exampleCalculation: {
     inputSummary: 'A 20-ft long, 2-ft high wall using 12x4 inch blocks. Base trench is 6 inches deep and 24 inches wide. 10% waste:',
     steps: [
-      '1. Wall Area: $20 \times 2 = 40$ sq ft',
-      '2. Block Area: $1 \times 0.333 = 0.333$ sq ft',
-      '3. Raw Blocks: $40 \div 0.333 = 120$',
-      '4. Add 10% waste: $120 \times 1.10 = 132$ blocks',
-      '5. Raw Caps: $20 \text{ ft} \div (12 \text{ in} / 12) = 20$',
-      '6. Add waste to Caps: $20 \times 1.10 = 22$ cap blocks',
-      '7. Base Volume: $20 \times (24/12) \times (6/12) = 20$ cu ft (plus 10% = 22 cu ft)'
+      'Wall area: 20 × 2 = 40 sq ft',
+      'Block face area: 1 × 0.333 = 0.333 sq ft',
+      'Raw wall blocks: 40 ÷ 0.333 = 120',
+      'Add 10% waste: 120 × 1.10 = 132 blocks',
+      'Raw cap blocks: 20 ft ÷ (12 in ÷ 12) = 20',
+      'Add waste to caps: 20 × 1.10 = 22 cap blocks',
+      'Base volume: 20 × (24 ÷ 12) × (6 ÷ 12) = 20 cu ft, plus 10% = 22 cu ft'
     ],
     resultSummary: 'You need 132 wall blocks, 22 cap blocks, and 22 cubic feet of crushed stone base.'
   },
@@ -181,7 +181,7 @@ const paverBaseCalculator: CalculatorConfig = {
   category: 'Hardscaping',
   title: 'Paver Base Calculator',
   shortTitle: 'Paver Base',
-  description: 'Estimate exactly how much crushed stone base and bedding sand you need for paver patios, walkways, and small hardscape projects.',
+  description: 'Estimate how much crushed stone base and bedding sand you may need for paver patios, walkways, and small hardscape projects.',
   metaTitle: 'Paver Base Calculator - Stone & Sand Estimator',
   metaDescription: 'Calculate how much crushed stone base and bedding sand you need for your paver patio or walkway. Get accurate estimates in tons and cubic yards.',
   primaryKeyword: 'paver base calculator',
@@ -278,8 +278,8 @@ const paverBaseCalculator: CalculatorConfig = {
   outputs: [
     { id: 'baseTons', label: 'Base Rock (Tons)', unit: 'Tons', type: 'primary' },
     { id: 'sandTons', label: 'Bedding Sand (Tons)', unit: 'Tons', type: 'primary' },
-    { id: 'baseCubicYards', label: 'Base Rock (Volume)', unit: 'yd³', type: 'secondary' },
-    { id: 'sandCubicYards', label: 'Bedding Sand (Volume)', unit: 'yd³', type: 'secondary' },
+    { id: 'baseCubicYards', label: 'Base Rock (Volume)', unit: 'yd^3', type: 'secondary' },
+    { id: 'sandCubicYards', label: 'Bedding Sand (Volume)', unit: 'yd^3', type: 'secondary' },
     { id: 'totalAreaSqFt', label: 'Total Area', unit: 'sq ft', type: 'secondary' },
     { id: 'warning', label: 'Recommendation', type: 'warning' }
   ],
@@ -316,13 +316,13 @@ const paverBaseCalculator: CalculatorConfig = {
   exampleCalculation: {
     inputSummary: 'Building a 20x10 foot patio. Using 4 inches of crushed stone base, 1 inch of bedding sand, and a 10% waste/compaction factor:',
     steps: [
-      '1. Calculate Area: $20 \times 10 = 200$ square feet',
-      '2. Base Volume: $200 \times (4 \div 12) = 66.67$ cubic feet',
-      '3. Sand Volume: $200 \times (1 \div 12) = 16.67$ cubic feet',
-      '4. Add 10% waste to Base: $66.67 \times 1.10 = 73.34$ ft³ ($2.72$ yds³)',
-      '5. Add 10% waste to Sand: $16.67 \times 1.10 = 18.34$ ft³ ($0.68$ yds³)',
-      '6. Convert Base to Tons: $2.72 \times 1.4 = 3.8$ Tons base',
-      '7. Convert Sand to Tons: $0.68 \times 1.35 = 0.92$ Tons sand'
+      'Area: 20 × 10 = 200 square feet',
+      'Base volume: 200 × (4 ÷ 12) = 66.67 cubic feet',
+      'Sand volume: 200 × (1 ÷ 12) = 16.67 cubic feet',
+      'Add 10% waste to base: 66.67 × 1.10 = 73.34 ft^3, or 2.72 yd^3',
+      'Add 10% waste to sand: 16.67 × 1.10 = 18.34 ft^3, or 0.68 yd^3',
+      'Convert base to tons: 2.72 × 1.4 = 3.8 tons of base',
+      'Convert sand to tons: 0.68 × 1.35 = 0.92 tons of sand'
     ],
     resultSummary: 'You need ~3.8 tons of base rock and ~0.92 tons of sand.'
   },
@@ -348,7 +348,7 @@ const paverBaseCalculator: CalculatorConfig = {
       answer: 'Yes. You should lay a high-quality woven geotextile fabric directly over the bare dirt subgrade, *before* adding the crushed stone base. This separation layer prevents mud from pumping up into your clean gravel base over the years.'
     }
   ],
-  relatedCalculators: ['gravel-calculator', 'concrete-slab-calculator'],
+  relatedCalculators: ['gravel-calculator', 'retaining-wall-calculator', 'concrete-slab-calculator'],
   testCases: [
     { name: 'Standard 20x10', inputs: { mode: 'rectangle', lengthFeet: 20, widthFeet: 10, baseDepthInches: 4, sandDepthInches: 1, baseDensity: 1.4, sandDensity: 1.35, wastePercentage: 0 }, expectedOutputs: { baseTons: 1.73, sandTons: 0.42 } },
     { name: 'Known Sq Ft base', inputs: { mode: 'squareFeet', knownSquareFeet: 250, baseDepthInches: 6, sandDepthInches: 1, baseDensity: 1.4, sandDensity: 1.35, wastePercentage: 10 }, expectedOutputs: { baseTons: 7.13, sandTons: 1.15 } },
@@ -362,7 +362,7 @@ const raisedBedSoilCalculator: CalculatorConfig = {
   category: 'Landscaping',
   title: 'Raised Garden Bed Soil Calculator',
   shortTitle: 'Garden Beds',
-  description: 'Estimate exactly how much potting soil or raised bed mix you need to fill your new garden beds.',
+  description: 'Estimate how much potting soil or raised bed mix you may need to fill your new garden beds.',
   metaTitle: 'Raised Garden Bed Soil Calculator - Bags & Yards Estimator',
   metaDescription: 'Calculate how much soil you need to fill your raised garden beds. Get estimates in cubic yards, cubic feet, and number of bags, plus a custom DIY mix ratio.',
   primaryKeyword: 'raised garden bed soil calculator',
@@ -442,9 +442,9 @@ const raisedBedSoilCalculator: CalculatorConfig = {
     { id: 'totalVolumeCubicYards', label: 'Bulk Soil Volume', unit: 'Cubic Yards', type: 'primary' },
     { id: 'bagsNeeded', label: 'Bags Required', unit: 'Bags', type: 'primary' },
     { id: 'totalVolumeCubicFeet', label: 'Total Volume', unit: 'Cubic Feet', type: 'secondary' },
-    { id: 'mixTopsoilCuFt', label: 'DIY Mix: Topsoil (50%)', unit: 'ft³', type: 'secondary' },
-    { id: 'mixCompostCuFt', label: 'DIY Mix: Compost (30%)', unit: 'ft³', type: 'secondary' },
-    { id: 'mixAerationCuFt', label: 'DIY Mix: Peat/Perlite (20%)', unit: 'ft³', type: 'secondary' },
+    { id: 'mixTopsoilCuFt', label: 'DIY Mix: Topsoil (50%)', unit: 'ft^3', type: 'secondary' },
+    { id: 'mixCompostCuFt', label: 'DIY Mix: Compost (30%)', unit: 'ft^3', type: 'secondary' },
+    { id: 'mixAerationCuFt', label: 'DIY Mix: Peat/Perlite (20%)', unit: 'ft^3', type: 'secondary' },
     { id: 'warning', label: 'Important Note', type: 'warning' }
   ],
   calculate: (inputs) => {
@@ -469,7 +469,7 @@ const raisedBedSoilCalculator: CalculatorConfig = {
       warning: result.warnings.join(' ')
     };
   },
-  formulaExplanation: 'First, we find the volume of one bed by multiplying $Length \times Width \times (Height \text{ in feet})$. If you are only partially filling the bed, we reduce the height accordingly. We then multiply by the number of beds. Because fresh soil has air in it and settles over time, we add a waste/settling factor. Cubic Feet is divided by 27 to find Cubic Yards. For bags measured in quarts, we convert them by dividing by 25.714 (the standard US dry quart conversion for soil).',
+  formulaExplanation: 'Raised bed volume = length × width × height in feet. If you are partially filling the bed, the calculator reduces the height by your fill percentage, then multiplies by the number of beds. A settling factor can be added because fresh soil often compresses over time. Cubic feet are divided by 27 to find cubic yards. For bags measured in quarts, quarts are converted to cubic feet using the standard US dry quart conversion.',
   assumptions: [
     'Beds are perfectly rectangular.',
     'Assumes standard US dry quart conversion for soil potting bags (1 cubic foot = ~25.7 dry quarts).'
@@ -480,12 +480,12 @@ const raisedBedSoilCalculator: CalculatorConfig = {
   exampleCalculation: {
     inputSummary: 'Filling an 8 ft by 4 ft raised bed that is 12 inches tall, 100% full. Using 1.5 cubic foot bags and 10% for settling:',
     steps: [
-      '1. Convert height to feet: $12 \text{ inches} = 1 \text{ foot}$',
-      '2. Calculate base volume: $8 \times 4 \times 1 = 32$ cubic feet',
-      '3. Add 10% settling factor: $32 \times 1.10 = 35.2$ cubic feet',
-      '4. Convert to Yards: $35.2 \div 27 \approx 1.3$ cubic yards',
-      '5. Calculate Bags: $35.2 \div 1.5 = 23.4$ bags',
-      '6. Round up to nearest whole bag: 24 bags needed.'
+      'Convert height to feet: 12 inches = 1 foot',
+      'Base volume: 8 × 4 × 1 = 32 cubic feet',
+      'Add 10% settling factor: 32 × 1.10 = 35.2 cubic feet',
+      'Convert to yards: 35.2 ÷ 27 ≈ 1.3 cubic yards',
+      'Calculate bags: 35.2 ÷ 1.5 = 23.4 bags',
+      'Round up to nearest whole bag: 24 bags needed.'
     ],
     resultSummary: 'You need 24 (1.5 cu ft) bags or approx 1.3 bulk cubic yards.'
   },
@@ -511,7 +511,7 @@ const raisedBedSoilCalculator: CalculatorConfig = {
       answer: 'New potting soil and compost are fluffy and full of air. As you water the plants and gravity takes hold, the soil mechanically compacts. Furthermore, the organic matter inside the soil actively decomposes, physically vanishing into thin air (and into your plants). This is completely normal; just top it off!'
     }
   ],
-  relatedCalculators: ['mulch-calculator'],
+  relatedCalculators: ['mulch-calculator', 'gravel-calculator', 'paver-base-calculator'],
   testCases: [
     { name: 'Standard 8x4x1 bed', inputs: { bedCount: 1, lengthFeet: 8, widthFeet: 4, heightInches: 12, fillPercentage: 100, bagSizeValue: 1.5, bagSizeUnit: 'cubicFeet', wastePercentage: 0 }, expectedOutputs: { bagsNeeded: 22, totalVolumeCubicYards: 1.19 } },
     { name: 'Hugelkultur 50% fill', inputs: { bedCount: 1, lengthFeet: 8, widthFeet: 4, heightInches: 24, fillPercentage: 50, bagSizeValue: 2, bagSizeUnit: 'cubicFeet', wastePercentage: 0 }, expectedOutputs: { bagsNeeded: 16 } },
@@ -527,7 +527,7 @@ const gravelCalculator: CalculatorConfig = {
   category: 'Landscaping',
   title: 'Gravel Calculator',
   shortTitle: 'Gravel',
-  description: 'Estimate exactly how much gravel, crushed stone, or sand you need for driveways, paths, patios, and drainage areas based on your dimensions and material type.',
+  description: 'Estimate how much gravel, crushed stone, or sand you may need for driveways, paths, patios, and drainage areas based on your dimensions and material type.',
   metaTitle: 'Gravel Calculator - Tons & Cubic Yards Estimator',
   metaDescription: 'Calculate how much gravel, crushed stone, pea gravel, or sand you need for your landscaping or driveway project. Get accurate estimates in tons and cubic yards.',
   primaryKeyword: 'gravel calculator',
@@ -618,7 +618,7 @@ const gravelCalculator: CalculatorConfig = {
     { id: 'totalTons', label: 'Estimated Tons', unit: 'Tons', type: 'primary' },
     { id: 'totalVolumeCubicYards', label: 'Bulk Volume', unit: 'Cubic Yards', type: 'primary' },
     { id: 'totalAreaSqFt', label: 'Total Area', unit: 'sq ft', type: 'secondary' },
-    { id: 'totalVolumeCubicFeet', label: 'Total Volume', unit: 'ft³', type: 'secondary' },
+    { id: 'totalVolumeCubicFeet', label: 'Total Volume', unit: 'ft^3', type: 'secondary' },
     { id: 'warning', label: 'Recommendation', type: 'warning' },
     { id: ' densityNote', label: 'Verification Needed', type: 'note' }
   ],
@@ -643,7 +643,7 @@ const gravelCalculator: CalculatorConfig = {
       ' densityNote': 'Gravel densities are estimates. Always verify the exact pounds-per-yard with your local quarry or supplier.'
     };
   },
-  formulaExplanation: 'First, we determine the square footage of your space. For a rectangle, it is $Length \times Width$. Then we calculate the volume by multiplying the square footage by the desired depth in feet (inches divided by 12) to get Cubic Feet. Divide by 27 to get Cubic Yards. Finally, to find Tons, we multiply the Cubic Yards by the density of the material (typically around 1.4 tons per cubic yard for standard crushed stone).',
+  formulaExplanation: 'Rectangle area = length × width. Circle area = π × radius². Volume = area × depth in feet. Cubic yards = cubic feet ÷ 27. Tons = cubic yards × material density. Density varies by supplier, material type, and moisture content.',
   assumptions: [
     'Calculations assume a relatively flat surface.',
     'Material densities are rules-of-thumb. Exact weight depends on moisture content and specific rock type.'
@@ -654,12 +654,12 @@ const gravelCalculator: CalculatorConfig = {
   exampleCalculation: {
     inputSummary: 'Filling a 20x10 foot driveway extension with 4 inches of crushed stone. Using a 10% waste/compaction factor:',
     steps: [
-      '1. Calculate Area: $20 \times 10 = 200$ square feet',
-      '2. Convert depth to feet: $4 \text{ in} \div 12 = 0.333$ ft',
-      '3. Calculate Volume: $200 \times 0.333 \approx 66.67$ cubic feet',
-      '4. Add 10% waste: $66.67 \times 1.10 = 73.34$ cubic feet',
-      '5. Convert to Yards: $73.34 \div 27 \approx 2.72$ cubic yards',
-      '6. Convert to Tons: $2.72 \times 1.4 \text{ tons/yd} \approx 3.8$ tons'
+      'Area: 20 × 10 = 200 square feet',
+      'Convert depth to feet: 4 in ÷ 12 = 0.333 ft',
+      'Volume: 200 × 0.333 ≈ 66.67 cubic feet',
+      'Add 10% waste: 66.67 × 1.10 = 73.34 cubic feet',
+      'Convert to yards: 73.34 ÷ 27 ≈ 2.72 cubic yards',
+      'Convert to tons: 2.72 × 1.4 tons per cubic yard ≈ 3.8 tons'
     ],
     resultSummary: 'You need approximately 3.8 tons (or 2.7 cubic yards) of crushed stone.'
   },
@@ -685,7 +685,7 @@ const gravelCalculator: CalculatorConfig = {
       answer: 'When you use a plate compactor on a base rock like "crusher run" or "item 4," the vibration forces the smaller dust and stone particles into the air gaps between the larger rocks. This shrinks the overall volume of the pile by 10-15%.'
     }
   ],
-  relatedCalculators: ['mulch-calculator', 'concrete-slab-calculator'],
+  relatedCalculators: ['mulch-calculator', 'raised-bed-soil-calculator', 'paver-base-calculator'],
   testCases: [
     { name: 'Standard 20x10', inputs: { mode: 'rectangle', lengthFeet: 20, widthFeet: 10, depthInches: 4, materialDensity: 1.4, wastePercentage: 0 }, expectedOutputs: { totalVolumeCubicYards: 2.47, totalTons: 3.46 } },
     { name: 'Circular fire pit', inputs: { mode: 'circle', diameterFeet: 12, depthInches: 2, materialDensity: 1.4, wastePercentage: 0 }, expectedOutputs: { totalVolumeCubicYards: 0.70, totalTons: 0.98 } },
@@ -700,7 +700,7 @@ const mulchCalculator: CalculatorConfig = {
   category: 'Landscaping',
   title: 'Mulch Calculator',
   shortTitle: 'Mulch',
-  description: 'Estimate exactly how much mulch you need for garden beds, landscape beds, tree rings, and paths based on your area and preferred depth.',
+  description: 'Estimate how much mulch you may need for garden beds, landscape beds, tree rings, and paths based on your area and preferred depth.',
   metaTitle: 'Mulch Calculator - Bulk & Bags Estimator',
   metaDescription: 'Calculate how much mulch you need for your landscaping project. Get accurate estimates in cubic yards, cubic feet, and number of bags.',
   primaryKeyword: 'mulch calculator',
@@ -789,7 +789,7 @@ const mulchCalculator: CalculatorConfig = {
     { id: 'totalVolumeCubicYards', label: 'Bulk Mulch', unit: 'Cubic Yards', type: 'primary' },
     { id: 'bagsNeeded', label: 'Bags Required', unit: 'Bags', type: 'primary' },
     { id: 'totalAreaSqFt', label: 'Total Area', unit: 'sq ft', type: 'secondary' },
-    { id: 'totalVolumeCubicFeet', label: 'Total Volume', unit: 'ft³', type: 'secondary' },
+    { id: 'totalVolumeCubicFeet', label: 'Total Volume', unit: 'ft^3', type: 'secondary' },
     { id: 'warning', label: 'Recommendation', type: 'warning' }
   ],
   calculate: (inputs) => {
@@ -812,7 +812,7 @@ const mulchCalculator: CalculatorConfig = {
       warning: result.warnings.join(' ')
     };
   },
-  formulaExplanation: 'First, we determine the square footage of your bed. For a rectangle, it is $Length \times Width$. For a circle, it is $\pi \times (\text{Diameter} \div 2)^2$. Then we calculate the volume by multiplying the square footage by the desired depth in feet (inches divided by 12). This gives total Cubic Feet. To find Cubic Yards, we divide the cubic feet by 27. Finally, to find the number of bags, we divide the required cubic feet by the bag size.',
+  formulaExplanation: 'Rectangle area = length × width. Circle area = π × (diameter ÷ 2)². Mulch volume = area × depth in feet. Cubic yards = cubic feet ÷ 27. Bag count = required cubic feet ÷ bag size, rounded up to the next whole bag.',
   assumptions: [
     'Calculations assume a relatively flat landscape surface.',
     'Assumes standard bag labeling is accurate.'
@@ -823,13 +823,13 @@ const mulchCalculator: CalculatorConfig = {
   exampleCalculation: {
     inputSummary: 'Covering a 10 foot by 15 foot rectangular bed with 3 inches of mulch. Using typical 2 cubic foot bags and 5% waste:',
     steps: [
-      '1. Calculate Area: $10 \times 15 = 150$ square feet',
-      '2. Convert depth to feet: $3 \text{ in} \div 12 = 0.25$ ft',
-      '3. Calculate Volume: $150 \times 0.25 = 37.5$ cubic feet',
-      '4. Add 5% waste: $37.5 \times 1.05 \approx 39.38$ cubic feet',
-      '5. Convert to Yards: $39.38 \div 27 \approx 1.46$ cubic yards',
-      '6. Calculate Bags (2 cu ft): $39.38 \div 2 \approx 19.69$',
-      '7. Round up to 20 bags.'
+      'Area: 10 × 15 = 150 square feet',
+      'Convert depth to feet: 3 in ÷ 12 = 0.25 ft',
+      'Volume: 150 × 0.25 = 37.5 cubic feet',
+      'Add 5% waste: 37.5 × 1.05 ≈ 39.38 cubic feet',
+      'Convert to yards: 39.38 ÷ 27 ≈ 1.46 cubic yards',
+      'Calculate bags using 2 cu ft bags: 39.38 ÷ 2 ≈ 19.69',
+      'Round up to 20 bags.'
     ],
     resultSummary: 'You need 20 bags (or about 1.5 cubic yards) of mulch.'
   },
@@ -844,7 +844,7 @@ const mulchCalculator: CalculatorConfig = {
     },
     {
       question: 'How many bags of mulch are in a cubic yard?',
-      answer: 'There are 27 cubic feet in one cubic yard. If you are using standard 2 cubic foot bags, you need 13.5 bags (or 14 bags) to make one cubic yard. If you are using 3 cubic foot bags, you need exactly 9 bags for one cubic yard.'
+      answer: 'There are 27 cubic feet in one cubic yard. If you are using standard 2 cubic foot bags, you need 13.5 bags, rounded up to 14 bags, to make one cubic yard. If you are using 3 cubic foot bags, you need 9 bags for one cubic yard.'
     },
     {
       question: 'What is a "mulch volcano" and why is it bad?',
@@ -873,7 +873,7 @@ const footingCalculator: CalculatorConfig = {
   shortTitle: 'Footings',
   description: 'Estimate concrete volume for rectangular footings used under walls, small structures, posts, and foundations.',
   metaTitle: 'Concrete Footing Calculator - Volume & Bags Estimate',
-  metaDescription: 'Calculate the exact amount of concrete needed for rectangular footings, including total volume and estimated bags (40lb, 60lb, 80lb).',
+  metaDescription: 'Estimate the concrete needed for rectangular footings, including total volume and estimated bags (40lb, 60lb, 80lb).',
   primaryKeyword: 'concrete footing calculator',
   secondaryKeywords: ['concrete calculator for footings', 'how much concrete for a footing', 'footing concrete estimate', 'rectangular footing calculator'],
   userIntent: 'User wants to calculate the concrete required to pour rectangular footings.',
@@ -916,10 +916,10 @@ const footingCalculator: CalculatorConfig = {
       type: 'select',
       defaultValue: 80,
       options: [
-        { label: '80-lb bag (~0.60 ft³ yield)', value: 80 },
-        { label: '60-lb bag (~0.45 ft³ yield)', value: 60 },
-        { label: '50-lb bag (~0.375 ft³ yield)', value: 50 },
-        { label: '40-lb bag (~0.30 ft³ yield)', value: 40 }
+        { label: '80-lb bag (~0.60 ft^3 yield)', value: 80 },
+        { label: '60-lb bag (~0.45 ft^3 yield)', value: 60 },
+        { label: '50-lb bag (~0.375 ft^3 yield)', value: 50 },
+        { label: '40-lb bag (~0.30 ft^3 yield)', value: 40 }
       ]
     },
     {
@@ -934,9 +934,9 @@ const footingCalculator: CalculatorConfig = {
   ],
   outputs: [
     { id: 'bagsNeeded', label: 'Bags Required', unit: 'Bags', type: 'primary' },
-    { id: 'volumePerFootingCubicFeet', label: 'Volume per Footing', unit: 'ft³', type: 'secondary' },
-    { id: 'totalVolumeCubicFeet', label: 'Total Volume', unit: 'ft³', type: 'secondary' },
-    { id: 'totalVolumeCubicYards', label: 'Total Volume', unit: 'yd³', type: 'secondary' },
+    { id: 'volumePerFootingCubicFeet', label: 'Volume per Footing', unit: 'ft^3', type: 'secondary' },
+    { id: 'totalVolumeCubicFeet', label: 'Total Volume', unit: 'ft^3', type: 'secondary' },
+    { id: 'totalVolumeCubicYards', label: 'Total Volume', unit: 'yd^3', type: 'secondary' },
     { id: 'warning', label: 'Important Note', type: 'warning' },
     { id: 'yieldNote', label: 'Verification Needed', type: 'note' }
   ],
@@ -959,7 +959,7 @@ const footingCalculator: CalculatorConfig = {
       yieldNote: 'Bag yields vary by manufacturer. Always verify the yield on the bag packaging.'
     };
   },
-  formulaExplanation: 'The formula calculates the volume of a rectangular prism. First, convert width and depth to feet ($Inches \div 12$). Then, calculate volume: $Volume = Length \times Width \times Depth$. Finally, multiply by the number of footings, apply the waste percentage, and divide by the yield of the selected concrete bag to get total bags.',
+  formulaExplanation: 'Footing volume = length × width × depth, with inches converted to feet first. Total volume = one footing volume × number of footings. The calculator applies your waste percentage, then divides by the selected bag yield to estimate total bags.',
   assumptions: [
     'The footings are perfect rectangular prisms.',
     'Standard average concrete bag yields are used.'
@@ -971,13 +971,13 @@ const footingCalculator: CalculatorConfig = {
   exampleCalculation: {
     inputSummary: 'Pouring 2 footings, each 8 feet long, 16 inches wide, and 12 inches deep. Using 80-lb bags with 10% waste:',
     steps: [
-      '1. Convert 16 inches to feet: $16 \div 12 \approx 1.33$ ft',
-      '2. Convert 12 inches to feet: $12 \div 12 = 1$ ft',
-      '3. Calculate volume for one footing: $8 \times 1.33 \times 1 \approx 10.66$ ft³',
-      '4. Multiply by 2 footings: $10.66 \times 2 = 21.32$ ft³',
-      '5. Add 10% waste: $21.32 \times 1.10 = 23.45$ ft³',
-      '6. Divide by 80-lb yield (0.60 ft³): $23.45 \div 0.60 = 39.08$ bags',
-      '7. Round up to nearest bag: 40 bags.'
+      'Convert 16 inches to feet: 16 ÷ 12 ≈ 1.33 ft',
+      'Convert 12 inches to feet: 12 ÷ 12 = 1 ft',
+      'Volume for one footing: 8 × 1.33 × 1 ≈ 10.66 ft^3',
+      'Multiply by 2 footings: 10.66 × 2 = 21.32 ft^3',
+      'Add 10% waste: 21.32 × 1.10 = 23.45 ft^3',
+      'Divide by 80-lb yield: 23.45 ÷ 0.60 = 39.08 bags',
+      'Round up to nearest bag: 40 bags.'
     ],
     resultSummary: 'You need 40 80-lb bags for the two footings.'
   },
@@ -1003,7 +1003,7 @@ const footingCalculator: CalculatorConfig = {
       answer: 'Mixing concrete by hand is physically demanding work. Most DIYers find that anything over 30 to 45 bags (around 1 cubic yard) is better suited for a concrete delivery truck or a portable power mixer.'
     }
   ],
-  relatedCalculators: ['post-hole-concrete-calculator', 'concrete-slab-calculator'],
+  relatedCalculators: ['concrete-bag-calculator', 'post-hole-concrete-calculator', 'sonotube-concrete-calculator', 'concrete-slab-calculator'],
   testCases: [
     { name: '1 standard footing', inputs: { footingCount: 1, lengthFeet: 10, widthInches: 12, depthInches: 12, bagSize: 80, wastePercentage: 0 }, expectedOutputs: { bagsNeeded: 17 } },
     { name: '4 footings with waste', inputs: { footingCount: 4, lengthFeet: 10, widthInches: 12, depthInches: 12, bagSize: 80, wastePercentage: 10 }, expectedOutputs: { bagsNeeded: 74 } },
@@ -1019,7 +1019,7 @@ const sonotubeCalculator: CalculatorConfig = {
   category: 'Concrete',
   title: 'Sonotube Concrete Calculator',
   shortTitle: 'Sonotubes',
-  description: 'Estimate exactly how many bags of concrete you need to fill round concrete form tubes (often called Sonotubes) for deck piers, columns, and structural footings.',
+  description: 'Estimate how many bags of concrete you may need to fill round concrete form tubes for deck piers, columns, and structural footings.',
   metaTitle: 'Sonotube Concrete Calculator - Deck Footings & Piers',
   metaDescription: 'Calculate how many bags of concrete (40lb, 60lb, 80lb) you need to fill round concrete forms and Sonotubes for your deck footings or columns.',
   primaryKeyword: 'sonotube concrete calculator',
@@ -1065,10 +1065,10 @@ const sonotubeCalculator: CalculatorConfig = {
       type: 'select',
       defaultValue: 80,
       options: [
-        { label: '80-lb bag (~0.60 ft³ yield)', value: 80 },
-        { label: '60-lb bag (~0.45 ft³ yield)', value: 60 },
-        { label: '50-lb bag (~0.375 ft³ yield)', value: 50 },
-        { label: '40-lb bag (~0.30 ft³ yield)', value: 40 }
+        { label: '80-lb bag (~0.60 ft^3 yield)', value: 80 },
+        { label: '60-lb bag (~0.45 ft^3 yield)', value: 60 },
+        { label: '50-lb bag (~0.375 ft^3 yield)', value: 50 },
+        { label: '40-lb bag (~0.30 ft^3 yield)', value: 40 }
       ]
     },
     {
@@ -1084,9 +1084,9 @@ const sonotubeCalculator: CalculatorConfig = {
   ],
   outputs: [
     { id: 'bagsNeeded', label: 'Bags Required', unit: 'Bags', type: 'primary' },
-    { id: 'volumePerTubeCubicFeet', label: 'Volume per Tube', unit: 'ft³', type: 'secondary' },
-    { id: 'totalVolumeCubicFeet', label: 'Total Volume', unit: 'ft³', type: 'secondary' },
-    { id: 'totalVolumeCubicYards', label: 'Total Volume', unit: 'yd³', type: 'secondary' },
+    { id: 'volumePerTubeCubicFeet', label: 'Volume per Tube', unit: 'ft^3', type: 'secondary' },
+    { id: 'totalVolumeCubicFeet', label: 'Total Volume', unit: 'ft^3', type: 'secondary' },
+    { id: 'totalVolumeCubicYards', label: 'Total Volume', unit: 'yd^3', type: 'secondary' },
     { id: 'warning', label: 'Important Note', type: 'warning' },
     { id: 'yieldNote', label: 'Verification Needed', type: 'note' }
   ],
@@ -1109,7 +1109,7 @@ const sonotubeCalculator: CalculatorConfig = {
       yieldNote: 'Bag yields vary by manufacturer. Always verify the yield on the bag packaging.'
     };
   },
-  formulaExplanation: 'The calculator uses the geometric volume of a cylinder. First, it converts the diameter into a radius in feet ($Radius = \text{Diameter} \div 2 \div 12$). Next, it calculates the volume per tube using $Volume = \pi \times Radius^2 \times Height$. This volume is multiplied by the number of tubes and the waste factor, then divided by the manufacturer bag yield to determine total bags needed.',
+  formulaExplanation: 'Tube radius in feet = diameter ÷ 2 ÷ 12. Cylinder volume = π × radius² × height. Total volume = one tube volume × number of tubes. The calculator applies your waste factor, then divides by the selected bag yield to estimate total bags.',
   assumptions: [
     'The concrete form tube expands minimally when wet (bulging can slightly increase required concrete).',
     'Standard industry average yields are used for bag sizing.'
@@ -1121,12 +1121,12 @@ const sonotubeCalculator: CalculatorConfig = {
   exampleCalculation: {
     inputSummary: 'Filling two 10-inch diameter tubes that are each 4 feet deep. Using 80-lb bags and 5% waste:',
     steps: [
-      '1. Convert diameter to radius in feet: $10 \div 2 \div 12 \approx 0.4167$ ft',
-      '2. Calculate volume of one cylinder: $\pi \times (0.4167)^2 \times 4 \approx 2.181$ ft³',
-      '3. Multiply by 2 tubes: $2.181 \times 2 = 4.363$ ft³',
-      '4. Add 5% waste: $4.363 \times 1.05 \approx 4.58$ ft³',
-      '5. Divide by 80-lb yield (0.60): $4.58 \div 0.60 = 7.63$ bags',
-      '6. Round up to nearest whole bag = 8 bags.'
+      'Convert diameter to radius in feet: 10 ÷ 2 ÷ 12 ≈ 0.4167 ft',
+      'Volume of one cylinder: π × 0.4167² × 4 ≈ 2.181 ft^3',
+      'Multiply by 2 tubes: 2.181 × 2 = 4.363 ft^3',
+      'Add 5% waste: 4.363 × 1.05 ≈ 4.58 ft^3',
+      'Divide by 80-lb yield: 4.58 ÷ 0.60 = 7.63 bags',
+      'Round up to nearest whole bag = 8 bags.'
     ],
     resultSummary: 'You need 8 80-lb bags for the two tubes.'
   },
@@ -1168,7 +1168,7 @@ const postHoleCalculator: CalculatorConfig = {
   category: 'Concrete',
   title: 'Post Hole Concrete Calculator',
   shortTitle: 'Post Holes',
-  description: 'Estimate exactly how much concrete you need for setting fence posts, deck footings, and mailbox posts. Calculates volume per hole while automatically subtracting the space taken up by the post itself.',
+  description: 'Estimate how much concrete you may need for setting fence posts, deck footings, and mailbox posts. Calculates volume per hole while subtracting the space taken up by the post itself.',
   metaTitle: 'Post Hole Concrete Calculator - Fence & Deck Posts',
   metaDescription: 'Calculate how many bags of concrete you need for fence posts and deck footings. Automatically subtracts post volume for accurate estimates.',
   primaryKeyword: 'post hole concrete calculator',
@@ -1225,10 +1225,10 @@ const postHoleCalculator: CalculatorConfig = {
       type: 'select',
       defaultValue: 80,
       options: [
-        { label: '80-lb bag (~0.60 ft³ yield)', value: 80 },
-        { label: '60-lb bag (~0.45 ft³ yield)', value: 60 },
-        { label: '50-lb bag (~0.375 ft³ yield)', value: 50 },
-        { label: '40-lb bag (~0.30 ft³ yield)', value: 40 }
+        { label: '80-lb bag (~0.60 ft^3 yield)', value: 80 },
+        { label: '60-lb bag (~0.45 ft^3 yield)', value: 60 },
+        { label: '50-lb bag (~0.375 ft^3 yield)', value: 50 },
+        { label: '40-lb bag (~0.30 ft^3 yield)', value: 40 }
       ]
     },
     {
@@ -1243,9 +1243,9 @@ const postHoleCalculator: CalculatorConfig = {
   ],
   outputs: [
     { id: 'bagsNeeded', label: 'Bags Required', unit: 'Bags', type: 'primary' },
-    { id: 'volumePerHoleCubicFeet', label: 'Concrete per Hole', unit: 'ft³', type: 'secondary' },
-    { id: 'totalVolumeCubicFeet', label: 'Total Volume', unit: 'ft³', type: 'secondary' },
-    { id: 'totalVolumeCubicYards', label: 'Total Volume', unit: 'yd³', type: 'secondary' },
+    { id: 'volumePerHoleCubicFeet', label: 'Concrete per Hole', unit: 'ft^3', type: 'secondary' },
+    { id: 'totalVolumeCubicFeet', label: 'Total Volume', unit: 'ft^3', type: 'secondary' },
+    { id: 'totalVolumeCubicYards', label: 'Total Volume', unit: 'yd^3', type: 'secondary' },
     { id: 'warning', label: 'Safety & Layout', type: 'warning' },
     { id: 'yieldNote', label: 'Verification Needed', type: 'note' }
   ],
@@ -1269,7 +1269,7 @@ const postHoleCalculator: CalculatorConfig = {
       yieldNote: 'Bag yields vary by manufacturer. Always verify the yield on the bag packaging.'
     };
   },
-  formulaExplanation: 'First, we find the volume of the cylindrical earthen hole using standard geometry ($Volume = \pi \times radius^2 \times depth$). Next, we calculate the volume of the post that sits inside the hole. The post displaces concrete, so we subtract the post volume from the hole volume to get the true concrete required per hole. Finally, we multiply by the number of holes, add your selected waste/spill factor, and divide by the manufacturer bag yield.',
+  formulaExplanation: 'Hole volume = π × radius² × depth. Post volume = post width × post width × buried depth. Concrete per hole = hole volume minus post volume. The calculator multiplies by the number of holes, applies your waste factor, and divides by the selected bag yield.',
   assumptions: [
     'The post is embedded all the way to the bottom of the hole.',
     'The hole is a perfect cylinder (in reality, hand-dug holes frequently taper or bell out, consuming more concrete).',
@@ -1282,21 +1282,21 @@ const postHoleCalculator: CalculatorConfig = {
   exampleCalculation: {
     inputSummary: 'Setting three standard 4x4 posts (which measure 3.5" x 3.5") in 8-inch diameter holes that are 24 inches deep. Using 80-lb bags and 10% waste:',
     steps: [
-      '1. Hole Volume (cu inches): $\pi \times 4^2 \times 24 \approx 1,206.37$ in³',
-      '2. Post Volume (cu inches): $3.5 \times 3.5 \times 24 = 294$ in³',
-      '3. True Concrete per hole: $1,206.37 - 294 = 912.37$ in³',
-      '4. Convert to cubic feet: $912.37 \div 1728 \approx 0.528$ ft³',
-      '5. Multiply by 3 posts = $1.584$ ft³',
-      '6. Add 10% waste: $1.584 \times 1.10 = 1.742$ ft³',
-      '7. Divide by 80-lb yield (0.60): $1.742 \div 0.60 = 2.90$ bags',
-      '8. Round up to nearest whole bag = 3 bags.'
+      'Hole volume: π × 4² × 24 ≈ 1,206.37 cubic inches',
+      'Post volume: 3.5 × 3.5 × 24 = 294 cubic inches',
+      'Concrete per hole: 1,206.37 - 294 = 912.37 cubic inches',
+      'Convert to cubic feet: 912.37 ÷ 1728 ≈ 0.528 ft^3',
+      'Multiply by 3 posts: 0.528 × 3 = 1.584 ft^3',
+      'Add 10% waste: 1.584 × 1.10 = 1.742 ft^3',
+      'Divide by 80-lb yield: 1.742 ÷ 0.60 = 2.90 bags',
+      'Round up to nearest whole bag = 3 bags.'
     ],
     resultSummary: 'You need 3 80-lb bags for the three posts.'
   },
   faqs: [
     {
       question: 'How wide should my post hole be?',
-      answer: 'A general rule of thumb for fence posts is that the hole diameter should be exactly three times the width of the post. So, a 4x4 post (which actually measures 3.5 inches wide) needs an approximately 10 to 11 inch hole. This gives 3+ inches of concrete thickness completely surrounding the timber.'
+      answer: 'A general rule of thumb for fence posts is that the hole diameter should be about three times the width of the post. So, a 4x4 post (which actually measures 3.5 inches wide) needs an approximately 10 to 11 inch hole. This gives 3+ inches of concrete thickness completely surrounding the timber.'
     },
     {
       question: 'How deep should my fence post holes be?',
@@ -1331,9 +1331,9 @@ const concreteBagsCalculator: CalculatorConfig = {
     category: 'Concrete',
     title: 'Concrete Bag Calculator',
     shortTitle: 'Concrete Bags',
-    description: 'Calculate exactly how many bags of concrete you need for your project. Enter your project dimensions or a known volume, and select your bag size (40-lb, 50-lb, 60-lb, or 80-lb).',
+    description: 'Estimate how many bags of concrete you may need for your project. Enter your project dimensions or a known volume, and select your bag size (40-lb, 50-lb, 60-lb, or 80-lb).',
     metaTitle: 'Concrete Bag Calculator - How Many Bags Do I Need?',
-    metaDescription: 'Find out exactly how many 80lb, 60lb, 50lb, or 40lb bags of concrete you need for your project. Fast, free DIY material calculator.',
+    metaDescription: 'Estimate how many 80lb, 60lb, 50lb, or 40lb bags of concrete you may need for your project. Fast, free DIY material calculator.',
     primaryKeyword: 'concrete bag calculator',
     secondaryKeywords: ['how many bags of concrete do i need', '80 lb concrete bag volume', '60 lb concrete bag volume', 'concrete bags per yard'],
     userIntent: 'User wants to know the number of concrete bags to buy for a project.',
@@ -1400,10 +1400,10 @@ const concreteBagsCalculator: CalculatorConfig = {
         type: 'select',
         defaultValue: 80,
         options: [
-          { label: '80-lb bag (~0.60 ft³ yield)', value: 80 },
-          { label: '60-lb bag (~0.45 ft³ yield)', value: 60 },
-          { label: '50-lb bag (~0.375 ft³ yield)', value: 50 },
-          { label: '40-lb bag (~0.30 ft³ yield)', value: 40 }
+          { label: '80-lb bag (~0.60 ft^3 yield)', value: 80 },
+          { label: '60-lb bag (~0.45 ft^3 yield)', value: 60 },
+          { label: '50-lb bag (~0.375 ft^3 yield)', value: 50 },
+          { label: '40-lb bag (~0.30 ft^3 yield)', value: 40 }
         ]
       },
       {
@@ -1446,10 +1446,10 @@ const concreteBagsCalculator: CalculatorConfig = {
         yieldNote: 'Bag yields vary by manufacturer. Always verify the yield on the bag packaging.'
       };
     },
-    formulaExplanation: 'When calculating by dimensions, Volume in Cubic Feet = Length (ft) × Width (ft) × Thickness (in ÷ 12). \nTo find bags needed, we divide the total cubic feet (including your waste factor) by the estimated yield of the selected bag size. Typical yields are 0.60 ft³ (80-lb), 0.45 ft³ (60-lb), 0.375 ft³ (50-lb), and 0.30 ft³ (40-lb).',
+    formulaExplanation: 'When calculating by dimensions, volume in cubic feet = length × width × thickness in feet. To estimate bags, the calculator divides total cubic feet, including your waste factor, by the estimated yield of the selected bag size. Typical yields are 0.60 ft^3 for 80-lb, 0.45 ft^3 for 60-lb, 0.375 ft^3 for 50-lb, and 0.30 ft^3 for 40-lb bags.',
     assumptions: [
-      'Calculations assume standard manufacturer bag yields. Exact yields may vary slightly by brand or mix type (like high-early strength).',
-      'If using dimension mode, we assume the subgrade form is exactly rectangular.'
+      'Calculations assume standard manufacturer bag yields. Actual yields may vary slightly by brand or mix type.',
+      'If using dimension mode, we assume the subgrade form is rectangular.'
     ],
     warnings: [
       'Concrete bags are extremely heavy. Make sure your vehicle or trailer is rated for the payload (an average pallet weighs over 3,000 lbs).'
@@ -1457,22 +1457,22 @@ const concreteBagsCalculator: CalculatorConfig = {
     exampleCalculation: {
       inputSummary: 'For a 5ft x 5ft AC unit pad that is 4 inches thick. Using 60-lb bags and a 10% waste factor:',
       steps: [
-        '1. Convert 4 inches to feet: 4 / 12 = 0.333 ft',
-        '2. Calculate base volume: 5 * 5 * 0.333 = 8.333 ft³',
-        '3. Add 10% waste: 8.333 * 1.10 = 9.167 ft³',
-        '4. Divide by bag yield: 9.167 / 0.45 (60-lb yield) = 20.37 bags',
-        '5. Round up to the nearest whole bag: 21 bags needed.'
+        'Convert 4 inches to feet: 4 ÷ 12 = 0.333 ft',
+        'Base volume: 5 × 5 × 0.333 = 8.333 ft^3',
+        'Add 10% waste: 8.333 × 1.10 = 9.167 ft^3',
+        'Divide by bag yield: 9.167 ÷ 0.45 = 20.37 bags',
+        'Round up to the nearest whole bag: 21 bags needed.'
       ],
       resultSummary: 'You need 21 60-lb bags.'
     },
     faqs: [
       {
         question: 'How many bags of concrete is in a cubic yard?',
-        answer: 'Since there are 27 cubic feet in a cubic yard, you need forty-five 80-lb bags (27 / 0.6), sixty 60-lb bags (27 / 0.45), or ninety 40-lb bags (27 / 0.3) to make exactly one cubic yard.'
+        answer: 'Since there are 27 cubic feet in a cubic yard, you need about forty-five 80-lb bags (27 / 0.6), sixty 60-lb bags (27 / 0.45), or ninety 40-lb bags (27 / 0.3) to make one cubic yard.'
       },
       {
         question: 'How many 80-lb bags are on a pallet?',
-        answer: 'A standard pallet of 80-lb bags contains 42 bags, weighing exactly 3,360 lbs. Be sure your vehicle can handle this payload.'
+        answer: 'A common pallet of 80-lb bags contains 42 bags, weighing about 3,360 lbs. Be sure your vehicle can handle this payload.'
       },
       {
         question: 'What is the yield of a single 60-lb bag of concrete?',
@@ -1487,7 +1487,7 @@ const concreteBagsCalculator: CalculatorConfig = {
         answer: 'While 0.60, 0.45, and 0.30 cubic feet are standard rules of thumb, specialized mixes like "high-yield" or lightweight concrete might produce more volume per bag. Check the back of the specific product bag for the manufacturer\'s rated yield.'
       }
     ],
-    relatedCalculators: ['concrete-slab-calculator'],
+    relatedCalculators: ['concrete-slab-calculator', 'concrete-footing-calculator', 'sonotube-concrete-calculator', 'post-hole-concrete-calculator'],
     testCases: [
       { name: 'Standard 80lb dimensions', inputs: { mode: 'dimensions', length: 5, width: 5, thickness: 4, wastePercentage: 0, bagSize: 80 }, expectedOutputs: { bagsNeeded: 14 } },
       { name: 'Standard 60lb dimensions', inputs: { mode: 'dimensions', length: 5, width: 5, thickness: 4, wastePercentage: 0, bagSize: 60 }, expectedOutputs: { bagsNeeded: 19 } },
@@ -1518,9 +1518,9 @@ const calculatorConfigs: CalculatorConfig[] = [
     category: 'Concrete',
     title: 'Concrete Slab Calculator',
     shortTitle: 'Concrete Slab',
-    description: 'Planning a patio, driveway, or garage floor? Our DIY concrete slab calculator helps you estimate exactly how much concrete to order based on your measurements. Easily figure out whether you need cubic yards for a ready-mix truck, or exactly how many 80-lb, 60-lb, or 40-lb bags to buy from the hardware store.',
+    description: 'Planning a patio, driveway, or garage floor? This concrete slab calculator helps you estimate how much concrete to order based on your measurements, whether you need cubic yards for a ready-mix truck or bag counts for hand mixing.',
     metaTitle: 'Concrete Slab Calculator - Cubic Yards & Bags | DIY Materials',
-    metaDescription: 'Estimate exactly how much concrete volume (cubic yards) and 40lb/60lb/80lb premixed bags you need for your slab project.',
+    metaDescription: 'Estimate concrete volume in cubic yards and approximate 40lb, 60lb, and 80lb premixed bag counts for your slab project.',
     primaryKeyword: 'concrete slab calculator',
     secondaryKeywords: ['concrete calculator for slab', 'how much concrete for a slab', 'concrete yards for slab', 'concrete bag calculator for slab', 'concrete patio calculator'],
     userIntent: 'User wants to know how much concrete to buy, in cubic yards or bags, for a flat rectangular pour.',
@@ -1589,13 +1589,13 @@ const calculatorConfigs: CalculatorConfig[] = [
         bags60lb: result.sixtyPoundBags,
         bags40lb: result.fortyPoundBags,
         weightWarning: result.warnings.join(' '),
-        yieldNote: 'Bag yields may vary by manufacturer. Check your specific bag to confirm it yields the assumed volume (80-lb = ~0.60 ft³, 60-lb = ~0.45 ft³, 40-lb = ~0.30 ft³).'
+        yieldNote: 'Bag yields may vary by manufacturer. Check your specific bag to confirm it yields the assumed volume (80-lb = ~0.60 ft^3, 60-lb = ~0.45 ft^3, 40-lb = ~0.30 ft^3).'
       };
     },
-    formulaExplanation: 'Volume in Cubic Feet = Length (ft) × Width (ft) × Thickness (in ÷ 12). To find Cubic Yards, divide Cubic Feet by 27. Bag requirements depend on the assumed yield per bag size multiplied by the total volume.',
+    formulaExplanation: 'Slab volume in cubic feet = length × width × thickness in feet. Cubic yards = cubic feet ÷ 27. Bag counts are estimated by dividing total cubic feet by the assumed yield for each bag size, then rounding up.',
     assumptions: [
-      'Subgrade is perfectly leveled and compacted.',
-      'Forms are exactly the dimensions specified.',
+      'Subgrade is reasonably leveled and compacted.',
+      'Forms are close to the dimensions specified.',
       'A waste factor accounts for spillage, uneven subgrade, and mixing loss.'
     ],
     warnings: [
@@ -1607,10 +1607,10 @@ const calculatorConfigs: CalculatorConfig[] = [
       inputSummary: 'For a 10ft x 10ft patio that is 4 inches thick. Using a 10% waste factor:',
       steps: [
         'Convert thickness to feet: 4 ÷ 12 = 0.333 feet',
-        'Calculate exact cubic feet: 10 × 10 × 0.333 = 33.33 ft³',
-        'Add 10% waste: 33.33 × 1.10 = 36.67 ft³ total',
-        'Convert to cubic yards: 36.67 ÷ 27 = 1.36 yds³',
-        'Calculate 80-lb bags (80-lb = 0.6 ft³): 36.67 ÷ 0.60 = 61.12 (Round up to 62 bags)'
+        'Calculate cubic feet: 10 × 10 × 0.333 = 33.33 ft^3',
+        'Add 10% waste: 33.33 × 1.10 = 36.67 ft^3 total',
+        'Convert to cubic yards: 36.67 ÷ 27 = 1.36 yd^3',
+        'Calculate 80-lb bags using 0.60 ft^3 yield: 36.67 ÷ 0.60 = 61.12, then round up to 62 bags'
       ],
       resultSummary: 'You need 1.36 cubic yards of concrete, or 62 80-lb bags.'
     },
@@ -1618,7 +1618,7 @@ const calculatorConfigs: CalculatorConfig[] = [
 1. **Measure Length and Width**: Measure the layout of your subgrade form. Measurements must be in feet.
 2. **Measure Thickness**: The standard thickness for a patio or sidewalk is 4 inches. Enter your slab depth in inches.
 3. **Set Waste Percentage**: Usually kept at 10%. Variations in bottom depth and side forms can quickly use up extra concrete.
-4. **Read Output**: The calculator returns total cubic yards for a truck delivery, and the exact number of bags needed if you are hand-mixing.
+4. **Read Output**: The calculator returns total cubic yards for a truck delivery and approximate bag counts if you are hand-mixing.
     `,
     additionalSections: [
       {
@@ -1631,7 +1631,7 @@ const calculatorConfigs: CalculatorConfig[] = [
       },
       {
         title: 'Common DIY Mistakes',
-        markdown: `* **Forgetting the base layer**: Slabs poured straight into dirt will crack when the ground freezes and thaws. You need a compacted 4" crushed gravel base.\n* **Buying exactly what the math says**: The math assumes a perfectly flat, geometrically flawless box. You will always spill some, and forms are never perfectly square.\n* **Underestimating the weight**: A single pallet of 80-lb bags weighs over 3,000 lbs. If your half-ton pickup tries to carry that, you'll ruin your suspension. Take two trips or get it delivered.`
+        markdown: `* **Forgetting the base layer**: Slabs poured straight into dirt will crack when the ground freezes and thaws. You need a compacted 4" crushed gravel base.\n* **Buying only the raw math amount**: The math assumes a perfectly flat, geometrically clean form. You will usually spill some material, and forms are rarely perfect.\n* **Underestimating the weight**: A single pallet of 80-lb bags weighs over 3,000 lbs. If your half-ton pickup tries to carry that, you'll ruin your suspension. Take two trips or get it delivered.`
       },
       {
         title: 'When to Call a Professional',
