@@ -33,7 +33,7 @@ npm run build
 Create `.env.local` when you are ready to deploy or test canonical URLs locally:
 
 ```bash
-NEXT_PUBLIC_SITE_URL=https://diymaterialcalculator.com
+NEXT_PUBLIC_SITE_URL=https://www.diymaterialcalculator.com
 ```
 
 Replace the URL with your real production domain before submitting the sitemap to Google Search Console.
